@@ -12,8 +12,9 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s %(message)s"
 )
 
-DATA_DIR = Path("data")
-DATA_DIR.mkdir(exist_ok=True)
+# Robust path resolving to floatchat-poc/data regardless of where script is run from
+DATA_DIR = Path(__file__).parent.parent / "data"
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 ARGO_FILES = {
     "prof": "https://data-argo.ifremer.fr/ar_index_global_prof.txt",
