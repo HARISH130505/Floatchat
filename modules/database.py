@@ -134,10 +134,11 @@ class DataManager:
         if self._mode == "postgres":
             cap = f"LIMIT {int(limit)}" if limit else ""
             sql = f"""
-                SELECT date AS timestamp,
+                SELECT file,
+                       date AS timestamp,
                        latitude, longitude,
                        ocean, profiler_type, institution,
-                       value_qc
+                       date_update
                   FROM argo_all
                  {cap}
             """
